@@ -1,7 +1,6 @@
-import Image from 'next/image'
 
 export default function Home() {
   return (
-   <main>E-shop</main>
+   <div>E-shop</div>
   )
 }
