@@ -25,7 +25,7 @@ export const NavBar = () => {
           md:gap-0">
             <Link href="/" className={ `
             ${redressed.className} 
-            font-bold text-2x1`}>E-shop</Link>
+            font-bold text-2xl`}>E-shop</Link>
             <div className="
             hidden
             md:block">Search</div>
