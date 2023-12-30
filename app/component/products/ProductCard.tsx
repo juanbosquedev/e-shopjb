@@ -4,6 +4,7 @@ import Image from "next/image";
 import { truncateText } from "@/utils/truncateText";
 import { formatPrice } from "@/utils/formatPrice";
 import { Rating } from "@mui/material";
+import { useRouter } from "next/navigation";
 interface ProductCArdProps {
   data: any;
 }
@@ -11,8 +12,10 @@ export const ProductCard: React.FC<ProductCArdProps> = ({ data }) => {
  
   const productRatings = data.reviews.reduce((acc:number,item:any)=> item.rating + acc, 0)/data.reviews.length;
  
+  const router = useRouter();
   return (
     <div
+    onClick={()=>router.push(`/product/${data.id}`)}
       className="
       mt-4
     col-span-1
