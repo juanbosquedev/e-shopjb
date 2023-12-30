@@ -1,13 +1,20 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { truncateText } from "@/utils/truncateText";
+import { formatPrice } from "@/utils/formatPrice";
+import { Rating } from "@mui/material";
 interface ProductCArdProps {
   data: any;
 }
 export const ProductCard: React.FC<ProductCArdProps> = ({ data }) => {
+ 
+  const productRatings = data.reviews.reduce((acc:number,item:any)=> item.rating + acc, 0)/data.reviews.length;
+ 
   return (
     <div
       className="
+      mt-4
     col-span-1
     cursor-pointer
     border-[1.2px]
@@ -42,10 +49,10 @@ export const ProductCard: React.FC<ProductCArdProps> = ({ data }) => {
             className="w-full h-full object-contain"
           />
         </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div className="mt-4">{truncateText(data.name)}</div>
+        <div><Rating value={productRatings} readOnly/></div>
+        <div>{data.reviews.length} reviews</div>
+        <div className="font-semibold">{formatPrice(data.price)}</div>
       </div>
     </div>
   );
