@@ -36,11 +36,13 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     qunatity: 1,
     price: product.price,
   });
+  console.log({...cartProduct})
   const Ratings = productRatings(product);
 
   const handleColorSelect = useCallback((value:SelectedImgType)=>{
-console.log("hola")
-  }, [cartProduct.selectedImg])
+setCartProduct((prev)=>{
+  return {...prev, selectedImg:value}
+})  }, [cartProduct.selectedImg])
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <div>{/* <Images></Images> */}Images</div>

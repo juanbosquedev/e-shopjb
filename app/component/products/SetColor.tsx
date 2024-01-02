@@ -8,12 +8,12 @@ import {
 interface SetColorProps {
   images: SelectedImgType[];
   cartProduct: CartProductType;
-  handColorSelect: (value: SelectedImgType) => void;
+  handleColorSelect: (value: SelectedImgType) => void;
 }
 const SetColor: React.FC<SetColorProps> = ({
   images,
   cartProduct,
-  handColorSelect,
+  handleColorSelect,
 }) => {
   return (
     <div>
@@ -24,7 +24,7 @@ const SetColor: React.FC<SetColorProps> = ({
             return (
               <div
               key={images.color}
-              onClick={(images)=> handColorSelect(images)}
+              onClick={()=> handleColorSelect(images)}
                 
                 className={`h-7 w-7 rounded-full border-teal-300
         flex items-center justify-cnter
