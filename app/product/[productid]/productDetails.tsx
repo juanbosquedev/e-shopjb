@@ -3,12 +3,44 @@
 import { Rating } from "@mui/material";
 import { productRatings } from "@/utils/productRatings";
 import Horizontal from "@/utils/horizontal";
+import { useState, useCallback } from "react";
+import SetColor from "../../component/products/SetColor";
 interface ProductDetailsProps {
   product: any;
 }
+export type CartProductType = {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  brand: string;
+  selectedImg: SelectedImgType;
+  qunatity: number;
+  price: number;
+};
+
+export type SelectedImgType = {
+  color: string;
+  colorCode: string;
+  image: string;
+};
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
+  const [cartProduct, setCartProduct] = useState<CartProductType>({
+    id: product.id,
+    name: product.name,
+    description: product.description,
+    category: product.category,
+    brand: product.brand,
+    selectedImg: { ...product.images[0] },
+    qunatity: 1,
+    price: product.price,
+  });
   const Ratings = productRatings(product);
+
+  const handleColorSelect = useCallback((value:SelectedImgType)=>{
+console.log("hola")
+  }, [cartProduct.selectedImg])
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <div>{/* <Images></Images> */}Images</div>
@@ -32,8 +64,12 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         <div className={product.inStock ? "text-teal-400" : "text-rose-400"}>
           {product.inStock ? " In Stock" : "Out of Stock"}
         </div>
-        <Horizontal /> 
-        <div>color</div>
+        <Horizontal />
+        <SetColor
+          cartProduct={cartProduct}
+          images={product.images}
+          handleColorSelect={handleColorSelect}
+        />
         <Horizontal />
         <div>quantity</div>
         <Horizontal />
