@@ -11,13 +11,12 @@ interface ProductCArdProps {
   data: any;
 }
 export const ProductCard: React.FC<ProductCArdProps> = ({ data }) => {
- 
-   const Ratings=productRatings(data)
- 
+  const Ratings = productRatings(data);
+
   const router = useRouter();
   return (
     <div
-    onClick={()=>router.push(`/product/${data.id}`)}
+      onClick={() => router.push(`/product/${data.id}`)}
       className="
       mt-4
     col-span-1
@@ -55,7 +54,9 @@ export const ProductCard: React.FC<ProductCArdProps> = ({ data }) => {
           />
         </div>
         <div className="mt-4">{truncateText(data.name)}</div>
-        <div><Rating value={Ratings} readOnly></Rating></div>
+        <div>
+          <Rating value={Ratings} readOnly></Rating>
+        </div>
         <div>{data.reviews.length} reviews</div>
         <div className="font-semibold">{formatPrice(data.price)}</div>
       </div>

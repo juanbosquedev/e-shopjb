@@ -5,6 +5,7 @@ import { productRatings } from "@/utils/productRatings";
 import Horizontal from "@/utils/horizontal";
 import { useState, useCallback } from "react";
 import SetColor from "../../component/products/SetColor";
+import SetQuantity from "@/app/component/products/SetQuantity";
 interface ProductDetailsProps {
   product: any;
 }
@@ -15,7 +16,7 @@ export type CartProductType = {
   category: string;
   brand: string;
   selectedImg: SelectedImgType;
-  qunatity: number;
+  quantity: number;
   price: number;
 };
 
@@ -33,16 +34,31 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     category: product.category,
     brand: product.brand,
     selectedImg: { ...product.images[0] },
-    qunatity: 1,
+    quantity: 1,
     price: product.price,
   });
-  console.log({...cartProduct})
+
   const Ratings = productRatings(product);
 
-  const handleColorSelect = useCallback((value:SelectedImgType)=>{
-setCartProduct((prev)=>{
-  return {...prev, selectedImg:value}
-})  }, [cartProduct.selectedImg])
+  const handleQuantityIncrease = useCallback(() => {
+    return setCartProduct((prev) => {
+      return { ...prev, quantity: prev.quantity+1 };
+    });
+  }, []);
+  const handleQuantityDecrease = useCallback(() => {
+    return setCartProduct((prev) => {
+      return { ...prev, quantity: prev.quantity-1 };
+    });
+  }, []);
+
+  const handleColorSelect = useCallback(
+    (value: SelectedImgType) => {
+      setCartProduct((prev) => {
+        return { ...prev, selectedImg: value };
+      });
+    },
+    [cartProduct.selectedImg]
+  );
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <div>{/* <Images></Images> */}Images</div>
@@ -73,7 +89,11 @@ setCartProduct((prev)=>{
           handleColorSelect={handleColorSelect}
         />
         <Horizontal />
-        <div>quantity</div>
+        <SetQuantity
+          cartProduct={cartProduct}
+          handleQtyDecrease={handleQuantityDecrease}
+          handleQtyIncrease={handleQuantityIncrease}
+        />
         <Horizontal />
         <div>add to cart</div>
       </div>
