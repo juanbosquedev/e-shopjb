@@ -6,6 +6,7 @@ import Horizontal from "@/utils/horizontal";
 import { useState, useCallback } from "react";
 import SetColor from "../../component/products/SetColor";
 import SetQuantity from "@/app/component/products/SetQuantity";
+import Button from "@/app/component/Button";
 interface ProductDetailsProps {
   product: any;
 }
@@ -41,16 +42,20 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   const Ratings = productRatings(product);
 
   const handleQuantityIncrease = useCallback(() => {
-    if(cartProduct.quantity  === 10){return }
-   
+    if (cartProduct.quantity === 10) {
+      return;
+    }
+
     return setCartProduct((prev) => {
-      return { ...prev, quantity: prev.quantity+1 };
+      return { ...prev, quantity: prev.quantity + 1 };
     });
   }, [cartProduct]);
   const handleQuantityDecrease = useCallback(() => {
-    if(cartProduct.quantity === 1){return}
+    if (cartProduct.quantity === 1) {
+      return;
+    }
     return setCartProduct((prev) => {
-      return { ...prev, quantity: prev.quantity-1 };
+      return { ...prev, quantity: prev.quantity - 1 };
     });
   }, [cartProduct]);
 
@@ -98,7 +103,9 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           handleQtyIncrease={handleQuantityIncrease}
         />
         <Horizontal />
-        <div>add to cart</div>
+        <div className="max-w-[300px]">
+          <Button  label="Add To cart" onClick={() => {}} />
+        </div>
       </div>
     </div>
   );
