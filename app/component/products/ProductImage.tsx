@@ -31,7 +31,9 @@ const ProductImage: React.FC<ProductImageProps> = ({
   "
     >
       <div
-        className="flex-col
+        className="
+        flex
+        flex-col
       items-center
       justify-center
       gap-4
@@ -49,7 +51,7 @@ const ProductImage: React.FC<ProductImageProps> = ({
               onClick={() => handleCaolorSelect(image)}
               className={`
               relative 
-            w-[%80]
+            w-[80%]
             aspect-square
             rounded
             border-teal-300
@@ -79,6 +81,13 @@ const ProductImage: React.FC<ProductImageProps> = ({
           w-full
           src={cartProduct.selectedImg.image}
           alt={cartProduct.name}
+          className="w-full
+          h-full
+          object-contain
+          max-h-[500px]
+          min-h-[300px]
+          sm:min-h-[400px]
+          "
         />
       </div>
     </div>
