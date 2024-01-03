@@ -41,15 +41,18 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   const Ratings = productRatings(product);
 
   const handleQuantityIncrease = useCallback(() => {
+    if(cartProduct.quantity  === 10){return }
+   
     return setCartProduct((prev) => {
       return { ...prev, quantity: prev.quantity+1 };
     });
-  }, []);
+  }, [cartProduct]);
   const handleQuantityDecrease = useCallback(() => {
+    if(cartProduct.quantity === 1){return}
     return setCartProduct((prev) => {
       return { ...prev, quantity: prev.quantity-1 };
     });
-  }, []);
+  }, [cartProduct]);
 
   const handleColorSelect = useCallback(
     (value: SelectedImgType) => {
