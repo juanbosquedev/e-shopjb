@@ -5,6 +5,8 @@ import { NavBar } from "./component/nav/NavBar";
 import { Footer } from "./component/footer/Footer";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
+import { CartProvider } from "./providers/CartProvider";
+
 export const metadata: Metadata = {
   title: "E-Shop JB",
   description: "E-commerceApp by Juan Bosque",
@@ -18,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} test-slate-700`}>
-        <div className="flex flex-col min-h-screen">
-          <NavBar></NavBar>
-          <main className="flex-grow ">{children}</main>
-          <Footer></Footer>
-        </div>
+        <CartProvider>
+          <div className="flex flex-col min-h-screen">
+            <NavBar></NavBar>
+            <main className="flex-grow ">{children}</main>
+            <Footer></Footer>
+          </div>
+        </CartProvider>
       </body>
     </html>
   );
