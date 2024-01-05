@@ -6,6 +6,7 @@ import { Footer } from "./component/footer/Footer";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 import { CartProvider } from "./providers/CartProvider";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "E-Shop JB",
@@ -20,6 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} test-slate-700`}>
+        <Toaster
+          toastOptions={{
+            style: {
+              background: "rgb(51 65 85)",
+              color: "fff",
+            },
+          }}
+        />
         <CartProvider>
           <div className="flex flex-col min-h-screen">
             <NavBar></NavBar>
