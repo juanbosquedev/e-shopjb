@@ -120,12 +120,18 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
               <MdCheckCircle className="text-teal-400" size={20} />
               <span>Product added to cart</span>
             </p>
-            <div
-            className="max-w-[300px]"><Button label="View Cart" outline onClick={()=>{router.push("/cart")}}></Button></div>
+            <div className="max-w-[300px]">
+              <Button
+                label="View Cart"
+                outline
+                onClick={() => {
+                  router.push("/cart");
+                }}
+              ></Button>
+            </div>
           </>
         ) : (
           <>
-            {" "}
             <SetColor
               cartProduct={cartProduct}
               images={product.images}
