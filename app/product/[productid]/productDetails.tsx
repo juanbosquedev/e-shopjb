@@ -3,11 +3,12 @@
 import { Rating } from "@mui/material";
 import { productRatings } from "@/utils/productRatings";
 import Horizontal from "@/utils/horizontal";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
 import SetColor from "../../component/products/SetColor";
 import SetQuantity from "@/app/component/products/SetQuantity";
 import Button from "@/app/component/Button";
 import ProductImage from "@/app/component/products/ProductImage";
+import { useCart } from "@/app/hooks/useCart";
 interface ProductDetailsProps {
   product: any;
 }
@@ -29,6 +30,8 @@ export type SelectedImgType = {
 };
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
+  const {handleAddProductToCart, cartProducts}=useCart()
+  console.log(cartProducts)
   const [cartProduct, setCartProduct] = useState<CartProductType>({
     id: product.id,
     name: product.name,
@@ -109,7 +112,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         />
         <Horizontal />
         <div className="max-w-[300px]">
-          <Button label="Add To cart" onClick={() => {}} />
+          <Button label="Add To cart" onClick={() => {handleAddProductToCart(cartProduct)}} />
         </div>
       </div>
     </div>
