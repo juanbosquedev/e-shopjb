@@ -14,6 +14,13 @@ import { useRouter } from "next/navigation";
 interface ProductDetailsProps {
   product: any;
 }
+
+export type SelectedImgType = {
+  color: string;
+  colorCode: string;
+  image: string;
+};
+
 export type CartProductType = {
   id: string;
   name: string;
@@ -25,13 +32,10 @@ export type CartProductType = {
   price: number;
 };
 
-export type SelectedImgType = {
-  color: string;
-  colorCode: string;
-  image: string;
-};
+
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
+
   const { handleAddProductToCart, cartProducts } = useCart();
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [cartProduct, setCartProduct] = useState<CartProductType>({
@@ -46,6 +50,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   });
 
   const router = useRouter();
+
   useEffect(() => {
     setIsProductInCart(false);
     if (cartProducts) {
@@ -57,7 +62,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         setIsProductInCart(true);
       }
     }
-  }, [cartProducts]);
+  }, [cartProducts, product.id]);
+console.log(cartProducts, " cart products")
   const Ratings = productRatings(product);
 
   const handleQuantityIncrease = useCallback(() => {
@@ -68,7 +74,9 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     return setCartProduct((prev) => {
       return { ...prev, quantity: prev.quantity + 1 };
     });
+
   }, [cartProduct]);
+
   const handleQuantityDecrease = useCallback(() => {
     if (cartProduct.quantity === 1) {
       return;
@@ -86,8 +94,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     },
     [cartProduct.selectedImg]
   );
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
       <ProductImage
         cartProduct={cartProduct}
         product={product}

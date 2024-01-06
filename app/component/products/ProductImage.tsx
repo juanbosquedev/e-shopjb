@@ -77,18 +77,12 @@ const ProductImage: React.FC<ProductImageProps> = ({
       aspect-square"
       >
         <Image
-          fill
-          w-full
-          src={cartProduct.selectedImg.image}
-          alt={cartProduct.name}
-          className="w-full
-          h-full
-          object-contain
-          max-h-[500px]
-          min-h-[300px]
-          sm:min-h-[400px]
-          "
-        />
+  layout="fill"
+  src={cartProduct.selectedImg.image}
+  alt={cartProduct.name}
+  className="w-full h-full object-contain max-h-[500px] min-h-[300px] sm:min-h-[400px]"
+/>
+
       </div>
     </div>
   );
