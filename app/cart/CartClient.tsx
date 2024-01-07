@@ -24,12 +24,22 @@ const CartClient = () => {
   return (
     <div>
       <Heading title="Shopping Cart" center />
-      <div>
-        <div>PRODUCT</div>
-        <div>PRICE</div>
-        <div>QUANTITY</div>
-        <div>TOTAL</div>
+      <div className="grid grid-cols-5
+      text-x5
+      gap-4
+      pb-2
+      items-center
+      mt-8">
+        <div col-span-2 justify-self-start>PRODUCT</div>
+        <div className="justify-self-center">PRICE</div>
+        <div className="justify-self-center">QUANTITY</div>
+        <div className="justify-self-end">TOTAL</div>
       </div>
+      <div>{cartProducts && cartProducts.map((item)=>{
+        return (
+            <div key={item.id}>{item.name}</div>
+        )
+      })}</div>
     </div>
   );
 };
