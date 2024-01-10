@@ -12,7 +12,6 @@ interface ProductCArdProps {
 }
 export const ProductCard: React.FC<ProductCArdProps> = ({ data }) => {
   const Ratings = productRatings(data);
-
   const router = useRouter();
   return (
     <div

@@ -37,7 +37,7 @@ export const products = [
         color: "Black",
         colorCode: "#000000",
         image:
-          "https://firebasestorage.googleapis.com/v0/b/e-shop-vid.appspot.com/o/products%2Flogitech-graphite.png?alt=media&token=d07334d8-ab2b-4648-a38b-2a062a1a49bc",
+          "https://images.fravega.com/f300/f40c986ec23133c8cff3b8be0427548a.jpg.webp",
       },
     ],
     reviews: [
@@ -150,7 +150,7 @@ export const products = [
         color: "Graphite",
         colorCode: " #383838",
         image:
-          "https://firebasestorage.googleapis.com/v0/b/e-shop-vid.appspot.com/o/products%2Flogitech-graphite.png?alt=media&token=d07334d8-ab2b-4648-a38b-2a062a1a49bc",
+          "https://images.fravega.com/f300/7baabd8cea2f9b9c34db707aad36f82c.png.webp",
       },
     ],
     reviews: [],
