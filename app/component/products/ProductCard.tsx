@@ -46,12 +46,13 @@ export const ProductCard: React.FC<ProductCArdProps> = ({ data }) => {
         relative
         w-full"
         >
+          {data.images[0].image &&
           <Image
-            fill
+          layout="fill" sizes="(max-width: 600px) 100vw, 1200px"
             src={data.images[0].image}
             alt={data.name}
             className="w-full h-full object-contain"
-          />
+          />}
         </div>
         <div className="mt-4">{truncateText(data.name)}</div>
         <div>

@@ -50,20 +50,20 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   });
 
   const router = useRouter();
+  console.log(cartProducts, " cartproducts")
 
   useEffect(() => {
+    
     setIsProductInCart(false);
     if (cartProducts) {
-      const existingIndex = cartProducts.findIndex(
-        (item) => item.id === product.id
-      );
-
+  
+      
+      const existingIndex = cartProducts.findIndex( (item) => item.id === product.id );
       if (existingIndex > -1) {
         setIsProductInCart(true);
       }
     }
-  }, [cartProducts, product.id]);
-console.log(cartProducts, " cart products")
+  }, [cartProducts]);
   const Ratings = productRatings(product);
 
   const handleQuantityIncrease = useCallback(() => {
@@ -126,7 +126,7 @@ console.log(cartProducts, " cart products")
         <Horizontal />
         {isProductInCart ? (
           <>
-            <p className="mb-2 text-slate-500 flex itmes-center gap-1">
+            <p className="mb-2 text-slate-500 flex items-center gap-1">
               <MdCheckCircle className="text-teal-400" size={20} />
               <span>Product added to cart</span>
             </p>
