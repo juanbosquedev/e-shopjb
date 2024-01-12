@@ -16,7 +16,8 @@ const CartCount = () => {
       <div className="text-3xl">
         <CiShoppingCart />
       </div>
-      <span className="
+      <span
+        className="
       absolute
       top-[-10px]
       right-[-10px]
@@ -27,8 +28,11 @@ const CartCount = () => {
       rounded-full
       flex
       items-center
-      justif-center
-      text-sm">{cartTotalQty}</span>
+      justify-center
+      text-sm"
+      >
+        {cartTotalQty}
+      </span>
     </div>
   );
 };
