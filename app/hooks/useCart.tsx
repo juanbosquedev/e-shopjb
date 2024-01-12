@@ -5,7 +5,7 @@ import {
   useCallback,
   useEffect,
 } from "react";
-import { CartProductType } from "../product/[productid]/productDetails";
+import { CartProductType } from "../product/[productId]/productDetails";
 import { toast } from "react-hot-toast";
 type CartContextType = {
   cartTotalQty: number;
@@ -14,7 +14,7 @@ type CartContextType = {
   handleRemoveProductFromCart: (product: CartProductType) => void;
   handleCartQtyIncrease: (product: CartProductType) => void;
   handleCartQtyDecrease: (product: CartProductType) => void;
-  handleClearCart:()=>void;
+  handleClearCart: () => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -115,9 +115,8 @@ export const CartContextProvider = (props: Props) => {
 
   const handleClearCart = useCallback(() => {
     setCartProducts(null);
-    setCartTotalQty(0)
+    setCartTotalQty(0);
     localStorage.setItem("eShopCartitems", JSON.stringify(null));
-
   }, [cartProducts]);
 
   const value = {

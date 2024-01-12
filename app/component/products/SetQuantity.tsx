@@ -1,6 +1,6 @@
 "use client";
 
-import { CartProductType } from "@/app/product/[productid]/productDetails";
+import { CartProductType } from "@/app/product/[productId]/productDetails";
 import { dividerClasses } from "@mui/material";
 
 interface SetQuantytyProps {

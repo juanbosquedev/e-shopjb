@@ -1,6 +1,6 @@
 "use client";
 
-import { CartProductType } from "../product/[productid]/productDetails";
+import { CartProductType } from "../product/[productId]/productDetails";
 import { formatPrice } from "@/utils/formatPrice";
 import Link from "next/link";
 import { truncateText } from "@/utils/truncateText";
@@ -13,8 +13,12 @@ interface ItemContentProps {
 }
 
 const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
- const {handleRemoveProductFromCart, handleCartQtyIncrease, handleCartQtyDecrease} = useCart()
-    return (
+  const {
+    handleRemoveProductFromCart,
+    handleCartQtyIncrease,
+    handleCartQtyDecrease,
+  } = useCart();
+  return (
     <div
       className="grid
     grid-cols-5
@@ -44,25 +48,35 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
           <Link href={`/product/${item.id}`}>{truncateText(item.name)}</Link>
           <div>{item.selectedImg.color}</div>
           <div className="w-[70px]">
-            <button className="text-slate-500 underline" onClick={() => {handleRemoveProductFromCart(item)}}>
+            <button
+              className="text-slate-500 underline"
+              onClick={() => {
+                handleRemoveProductFromCart(item);
+              }}
+            >
               Remove
             </button>
           </div>
         </div>
       </div>
-      
+
       <div className="justify-self-center">{formatPrice(item.price)}</div>
       <div className="justify-self-center">
         <SetQuantity
           cartCounter={true}
           cartProduct={item}
-          handleQtyIncrease={() => {handleCartQtyIncrease(item)}}
-          handleQtyDecrease={() => {handleCartQtyDecrease(item)}}
+          handleQtyIncrease={() => {
+            handleCartQtyIncrease(item);
+          }}
+          handleQtyDecrease={() => {
+            handleCartQtyDecrease(item);
+          }}
         />
       </div>
-      <div className="justify-self-end font-semibold">{item.price * item.quantity}</div>
+      <div className="justify-self-end font-semibold">
+        {item.price * item.quantity}
+      </div>
     </div>
-    
   );
 };
 

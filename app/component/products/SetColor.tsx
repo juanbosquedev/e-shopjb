@@ -3,7 +3,7 @@
 import {
   CartProductType,
   SelectedImgType,
-} from "@/app/product/[productid]/productDetails";
+} from "@/app/product/[productId]/productDetails";
 
 interface SetColorProps {
   images: SelectedImgType[];
@@ -20,12 +20,11 @@ const SetColor: React.FC<SetColorProps> = ({
       <div className="flex gap-4 items-center">
         <span className="font-semibold">COLOR:</span>
         <div className="flex gap-1">
-          {images.map( (images) => {
+          {images.map((images) => {
             return (
               <div
-              key={images.color}
-              onClick={()=> handleColorSelect(images)}
-                
+                key={images.color}
+                onClick={() => handleColorSelect(images)}
                 className={`h-7 w-7 rounded-full border-teal-300
         flex items-center justify-cnter
         ${
@@ -46,8 +45,7 @@ const SetColor: React.FC<SetColorProps> = ({
                 ></div>
               </div>
             );
-          }
-          )}
+          })}
         </div>
       </div>
     </div>

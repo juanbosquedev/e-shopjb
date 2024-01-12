@@ -1,24 +1,28 @@
 import { Container } from "@/app/component/Container";
-import ProductDetails from "../[productid]/productDetails";
-import product from "@/utils/product";
+import ProductDetails from "./productDetails";
 import ListRating from "./ListRating";
+import { products } from "@/utils/products";
 
 interface IParams {
   productId?: string;
 }
 
 const Product = ({ params }: { params: IParams }) => {
+  const product = products.find((item) => item.id === params.productId);
+
   return (
     <div className="p-8">
       <Container>
-        <ProductDetails product={product}/>
-        <div className="
+        <ProductDetails product={product} />
+        <div
+          className="
         flex
         fex-col
         mt-20
-        gap-4">
+        gap-4"
+        >
           <div>Add Rating</div>
-          <ListRating product={product}/>
+          {/* <ListRating product={product}/> */}
         </div>
       </Container>
     </div>

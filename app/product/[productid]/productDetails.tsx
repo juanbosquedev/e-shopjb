@@ -35,7 +35,6 @@ export type CartProductType = {
 
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
-
   const { handleAddProductToCart, cartProducts } = useCart();
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [cartProduct, setCartProduct] = useState<CartProductType>({
@@ -50,7 +49,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   });
 
   const router = useRouter();
-  console.log(cartProducts, " cartproducts")
 
   useEffect(() => {
     
