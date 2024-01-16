@@ -5,6 +5,8 @@ import Input from "../component/inputs/Input";
 import Button from "../component/Button";
 import { useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
+import Link from "next/link";
+import { AiOutlineGoogle } from "react-icons/ai";
 const RegisterForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -21,6 +23,7 @@ const RegisterForm = () => {
   return (
     <>
       <Heading title="Sun up for E-Shop" />
+      <Button outline label="Sign up with Google" icon={AiOutlineGoogle} onClick={()=>{}}></Button>
       <hr className="bg-slate-300 w-full h-px" />
       <Input
         id="name"
@@ -48,6 +51,7 @@ const RegisterForm = () => {
         required
       />
       <Button label={isLoading ? 'Loading' : 'Sign up'} onClick={handleSubmit(onSubmit)}/>
+    <p className="text-sm">Already have an account ?<Link className="underline" href='/login'>Log in</Link></p>
     </>
   );
 };
