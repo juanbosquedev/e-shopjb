@@ -18,7 +18,7 @@ const LoginForm = () => {
     defaultValues: { email: "", password: "" },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = () => {
     setIsLoading(true);
   };
   return (
