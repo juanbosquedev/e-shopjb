@@ -8,7 +8,7 @@ import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import Link from "next/link";
 import { AiOutlineGoogle } from "react-icons/ai";
 import axios from "axios";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -38,15 +38,18 @@ const RegisterForm = () => {
             router.refresh();
             toast.success("Logged In");
           }
+          if (callback?.error) {
+            toast.error(callback.error);
+          }
         })
-        .catch(() => {
-          toast.error("something went wrong");
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    });
-  };
+      })
+      .catch(() => {
+        toast.error("something went wrong");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+    };
   return (
     <>
       <Heading title="Sun up for E-Shop" />

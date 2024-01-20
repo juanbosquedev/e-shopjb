@@ -8,7 +8,7 @@ import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import Link from "next/link";
 import { AiOutlineGoogle } from "react-icons/ai";
 
-const LoginForm = () => {
+const  LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -23,7 +23,7 @@ const LoginForm = () => {
   };
   return (
     <>
-      <Heading title="Sun up for E-Shop" />
+      <Heading title="Sign in to E-Shop" />
       <Button
         outline
         label="Continue with Google"
@@ -56,7 +56,7 @@ const LoginForm = () => {
       <p className="text-sm">
         Do not have an account ? {" "}
         <Link className="underline" href="/register">
-          sign up
+          Sign up
         </Link>
       </p>
     </>
