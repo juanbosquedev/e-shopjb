@@ -1,8 +1,9 @@
-import {Container} from "../Container";
+import { Container } from "../Container";
 import Link from "next/link";
 import { Redressed } from "next/font/google";
-import CartCount from "../nav/CartCount"
-const redressed= Redressed ({subsets:['latin'], weight:['400']})
+import CartCount from "../nav/CartCount";
+import UserMenu from "./UserMenu";
+const redressed = Redressed({ subsets: ["latin"], weight: ["400"] });
 export const NavBar = () => {
   return (
     <div
@@ -17,25 +18,39 @@ export const NavBar = () => {
     >
       <div className="py-4 border-b-[1px]">
         <Container>
-          <div className="
+          <div
+            className="
           flex
           items-center
           justify-between
           gap-3
-          md:gap-0">
-            <Link href="/" className={ `
+          md:gap-0"
+          >
+            <Link
+              href="/"
+              className={`
             ${redressed.className} 
-            font-bold text-2xl`}>E-shop</Link>
-            <div className="
+            font-bold text-2xl`}
+            >
+              E-shop
+            </Link>
+            <div
+              className="
             hidden
-            md:block">Search</div>
-            <div className="
+            md:block"
+            >
+              Search
+            </div>
+            <div
+              className="
             flex 
             items-center
             gap-8
-            md:gap-12"><CartCount/></div>
-            <div>UserMenu</div>
-            <div></div>
+            md:gap-12"
+            >
+              <CartCount />
+              <UserMenu />
+            </div>
           </div>
         </Container>
       </div>
