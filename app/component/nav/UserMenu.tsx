@@ -55,16 +55,15 @@ const UserMenu = () => {
                 <MenuItem onClick={toggleOpen}>Your Orders</MenuItem>
               </Link>
               <Link href="/admin">
-                <MenuItem onClick={toggleOpen}>Admin Dashboard </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    toggleOpen();
+                    signOut();
+                  }}
+                >
+                  Admin Dashboard
+                </MenuItem>
               </Link>
-              <MenuItem
-                onClick={() => {
-                  toggleOpen();
-                  signOut();
-                }}
-              >
-                Admin Dashboard
-              </MenuItem>
             </div>
             <div>
               <Link href="/register">
