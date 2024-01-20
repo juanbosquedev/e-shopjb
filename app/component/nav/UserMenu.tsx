@@ -77,7 +77,7 @@ const UserMenu = () => {
           </div>
         )}
       </div>
-      {isOpen ? <BackDrop onClick={toggleOpen}/>:nul}
+      {isOpen ? <BackDrop onClick={toggleOpen} /> : null}
     </>
   );
 };
