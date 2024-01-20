@@ -1,11 +1,11 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/libs/prismadb";
 import bcrypt from "bcrypt";
 
-export default NextAuth({
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -40,19 +40,21 @@ export default NextAuth({
           credentials.password,
           user.hashPassword
         );
-        if(!isCorrectPassword){
+        if (!isCorrectPassword) {
           throw new Error("Invalid email or password");
         }
         return user;
       },
     }),
   ],
-  pages:{
-    signIn:"/login"
+  pages: {
+    signIn: "/login",
   },
-  debug:process.env.NODE_ENV === 'development',
-  session:{
-    strategy:'jwt'
+  debug: process.env.NODE_ENV === "development",
+  session: {
+    strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET
-});
+  secret: process.env.NEXTAUTH_SECRET,
+};
+
+export default NextAuth(authOptions);
