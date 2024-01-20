@@ -17,6 +17,12 @@
 ## Product Carts  
 <img src="./ReadmeImages/cart.png" width="800"/> 
 
+## Sign Up
+<img src="./ReadmeImages/SignUp.png" width="800"/> 
+
+## Log in
+<img src="./ReadmeImages/login.png" width="800"/> 
+
 ## Footer  
 <img src="./ReadmeImages/footer.png" width="800"/> 
 
