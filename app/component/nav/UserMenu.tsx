@@ -7,8 +7,12 @@ import Link from "next/link";
 import MenuItem from "./MenuItem";
 import { signOut } from "next-auth/react";
 import BackDrop from "./BackDrop";
+import { SafeUser } from "@/types";
 
-const UserMenu = () => {
+interface currentUserProps {
+  currentUser: SafeUser | null;
+}
+const UserMenu: React.FC<currentUserProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(() => {
     setIsOpen((prev) => !prev);
@@ -51,29 +55,40 @@ const UserMenu = () => {
         flex-col
         coursor-pointer"
           >
-            <div>
-              <Link href="/orders">
-                <MenuItem onClick={toggleOpen}>Your Orders</MenuItem>
-              </Link>
-              <Link href="/admin">
+            {currentUser ? (
+              <div>
+                <Link href="/orders">
+                  <MenuItem onClick={toggleOpen}>Your Orders</MenuItem>
+                </Link>
+                <Link href="/admin">
+                  <MenuItem
+                    onClick={() => {
+                      toggleOpen;
+                    }}
+                  >
+                    Admin Dashboard
+                  </MenuItem>
+                </Link>
+                <hr/>
                 <MenuItem
                   onClick={() => {
                     toggleOpen();
                     signOut();
                   }}
                 >
-                  Admin Dashboard
+                  Logout
                 </MenuItem>
-              </Link>
-            </div>
-            <div>
-              <Link href="/register">
-                <MenuItem onClick={toggleOpen}>Register </MenuItem>
-              </Link>
-              <Link href="/login">
-                <MenuItem onClick={toggleOpen}>Log In </MenuItem>
-              </Link>
-            </div>
+              </div>
+            ) : (
+              <div>
+                <Link href="/login">
+                  <MenuItem onClick={toggleOpen}>Log In </MenuItem>
+                </Link>
+                <Link href="/register">
+                  <MenuItem onClick={toggleOpen}>Register </MenuItem>
+                </Link>
+              </div>
+            )}
           </div>
         )}
       </div>

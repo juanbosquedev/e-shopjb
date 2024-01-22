@@ -7,17 +7,20 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 import { CartProvider } from "./providers/CartProvider";
 import { Toaster } from "react-hot-toast";
+import { getCurrentUser } from "@/actions/GetCurrentUser";
 
 export const metadata: Metadata = {
   title: "E-Shop JB",
   description: "E-commerceApp by Juan Bosque",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
+
 }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body className={`${poppins.className} test-slate-700`}>
