@@ -30,7 +30,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ currentUser }) => {
   useEffect(() => {
     if (currentUser) {
       router.push("./cart");
-      router.refresh()
+      router.refresh();
     }
   }, []);
 
