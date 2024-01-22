@@ -36,7 +36,7 @@ const UserMenu: React.FC<currentUserProps> = ({ currentUser }) => {
         text-slate-700"
           onClick={toggleOpen}
         >
-          <Avatar />
+          <Avatar src={currentUser?.image} />
           <AiFillCaretDown />
         </div>
         {isOpen && (
