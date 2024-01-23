@@ -114,7 +114,7 @@ export const CartContextProvider = (props: Props) => {
           updatedCart[existingIndex].quantity = ++updatedCart[existingIndex]
             .quantity;
           setCartProducts(updatedCart);
-          localStorage.setItem("eShopCartitems", JSON.stringify(updatedCart));
+          localStorage.setItem("eShopCartItems", JSON.stringify(updatedCart));
         }
       }
     },
@@ -138,7 +138,7 @@ export const CartContextProvider = (props: Props) => {
           updatedCart[existingIndex].quantity = --updatedCart[existingIndex]
             .quantity;
           setCartProducts(updatedCart);
-          localStorage.setItem("eShopCartitems", JSON.stringify(updatedCart));
+          localStorage.setItem("eShopCartItems", JSON.stringify(updatedCart));
         }
       }
     },
@@ -148,7 +148,7 @@ export const CartContextProvider = (props: Props) => {
   const handleClearCart = useCallback(() => {
     setCartProducts(null);
     setCartTotalQty(0);
-    localStorage.setItem("eShopCartitems", JSON.stringify(null));
+    localStorage.setItem("eShopCartItems", JSON.stringify(null));
   }, [cartProducts]);
 
   const handleSetPaymentIntent = useCallback(

@@ -13,7 +13,9 @@ const calculateOrderAmount = (items: CartProductType[]) => {
     const itemTotal = item.price * item.quantity;
     return acc + itemTotal;
   }, 0);
-  return totalPrice;
+
+  const price:any = Math.floor(totalPrice)
+  return price;
 };
 
 export async function POST(request: Request) {
@@ -36,10 +38,12 @@ export async function POST(request: Request) {
   };
   if (payment_intent_id) {
     /*updatede order*/
+
     const current_intent = await stripe.paymentIntents.retrieve(
       payment_intent_id
     );
     if (current_intent) {
+      
       const updated_intent = await stripe.paymentIntents.update(
         payment_intent_id,
         {
