@@ -57,7 +57,7 @@ model Order {
  type CartProductType{
   id String
   name String
-  deScription String
+  description String
   category String
   brand String
   selectedImg Image
