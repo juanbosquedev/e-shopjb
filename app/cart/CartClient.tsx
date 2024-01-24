@@ -6,9 +6,16 @@ import Link from "next/link";
 import Button from "../component/Button";
 import ItemContent from "./ItemContent";
 import { formatPrice } from "@/utils/formatPrice";
+import { SafeUser } from "@/types";
+import { useRouter } from "next/navigation";
 
-const CartClient = () => {
+interface CartClientProps {
+  currentUser: SafeUser | null;
+}
+
+const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
   const { cartProducts, handleClearCart, cartTotalAmount } = useCart();
+  const router = useRouter();
   if (!cartProducts || cartProducts.length === 0) {
     return (
       <div className="flex flex-col itmes-center">
@@ -54,7 +61,14 @@ const CartClient = () => {
       border-slate-200 py-4 flex justify-between"
       >
         <div className="w-[90px]">
-          <Button label="Clear Cart" onClick={() => {handleClearCart()}} small outline />
+          <Button
+            label="Clear Cart"
+            onClick={() => {
+              handleClearCart();
+            }}
+            small
+            outline
+          />
         </div>
         <div className="text-sm flex flex-col gap-1 items-start">
           <div className="flex justify-between w-full text-base font-semibold">
@@ -64,7 +78,13 @@ const CartClient = () => {
           <p className="text-slate-500">
             Taxes and shipping calculate at checkout
           </p>
-          <Button label="Checkout" onClick={() => {}} />
+          <Button
+            label={currentUser ? "Checkout" : "Login to Checkout"}
+            onClick={() => {
+              currentUser ? router.push("/checkout") : router.push("/login");
+            }}
+            outline={currentUser ? false : true}
+          />
           <Link
             href="/"
             className="text-slate-500 flex items-center gap-1 mt-2"
