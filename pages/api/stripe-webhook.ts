@@ -33,17 +33,18 @@ export default async function handler(
     return res.status(400).send("Webhook" + error);
   }
   switch (event.type) {
-    case "charge.succeeded":
-      const charge: any = event.data.object as Stripe.Charge;
-
-      if (typeof charge.payment_intent === "string") {
+    case "payment_intent.succeeded":
+      const paymentIntent: any = event.data.object as Stripe.PaymentIntent;
+  
+      if (typeof paymentIntent.id === "string") {
         await prisma?.order.update({
-          where: { paymentIntentId: charge.payment_intent },
-          data: { status: "complete", address: charge.shipping?.address },
+          where: { paymentIntentId: paymentIntent.id },
+          data: { status: "complete", address: paymentIntent.shipping?.address },
         });
       }
       break;
     default:
+      console.log(event.type);
       console.log("unhandled");
   }
   res.json({ received: true });
