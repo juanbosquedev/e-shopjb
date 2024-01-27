@@ -1,4 +1,4 @@
-import AdminNav from '../component/admin/AdminNav'
+import AdminNav from "../component/admin/AdminNav";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -9,11 +9,13 @@ export const metaData = {
   description: "E-Shop Admin Dashboard",
 };
 
-const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
+ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   return (
     <div>
-<AdminNav/>
+      <AdminNav />
       {children}
     </div>
   );
 };
+
+export default AdminLayout;

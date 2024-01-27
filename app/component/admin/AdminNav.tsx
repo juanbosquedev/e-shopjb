@@ -10,6 +10,7 @@ import {
   MdLibraryAdd,
 } from "react-icons/md";
 import { usePathname } from "next/navigation";
+
 const AdminNav = () => {
   const pathname = usePathname();
   return (
@@ -27,7 +28,7 @@ const AdminNav = () => {
             <AdminNavItem
               label="AddProducts"
               icon={MdLibraryAdd}
-              selected={pathname === "add-products"}
+              selected={pathname === "/admin/add-products"}
             />
           </Link>
           <Link href="/admin/manage-products">

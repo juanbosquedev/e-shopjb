@@ -1,5 +1,7 @@
+'use client'
+
 const Admin = () => {
-    return <div> </div>
+    return <div className="pt-8"> </div>
 }
  
 export default Admin;
