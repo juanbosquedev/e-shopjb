@@ -1,3 +1,5 @@
+import AdminNav from '../component/admin/AdminNav'
+
 interface AdminLayoutProps {
   children: React.ReactNode;
 }
@@ -10,7 +12,7 @@ export const metaData = {
 const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   return (
     <div>
-      <div>Nav</div>
+<AdminNav/>
       {children}
     </div>
   );
